@@ -7,7 +7,6 @@ from PyQt5 import uic
 form_class = uic.loadUiType("count.ui")[0]
 
 
-
 #화면을 띄우는데 사용되는 Class 선언
 class WindowClass(QMainWindow, form_class) :
     
