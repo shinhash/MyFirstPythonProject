@@ -1,6 +1,6 @@
 
 
-class Unit(object):
+class Unit():
 
     tribe = ""      # 종족
     name = ""       # 이름
@@ -42,6 +42,7 @@ class Unit(object):
 class Marin(Unit):
     
     def __init__(self):
+        super().__init__()
         pass
   
     def setName(self, name):
@@ -54,6 +55,7 @@ class Marin(Unit):
 class Jurge(Unit):
     
     def __init__(self):
+        super().__init__()
         pass
   
     def setName(self, name):
@@ -65,12 +67,11 @@ class Jurge(Unit):
 class Teran(Unit):
     
     def __init__(self):
+        super().__init__()
         pass
   
     def setName(self, name):
         self.name = name
-
-
 
 
 
