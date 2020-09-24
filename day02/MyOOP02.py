@@ -16,6 +16,7 @@ class Human(Animal):
     
     
     def __init__(self):
+#         Animal.__init__(self)
         super().__init__()
         self.name = "이재용"
     
