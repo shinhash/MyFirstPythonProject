@@ -10,7 +10,7 @@ import functools
 
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
-form_class = uic.loadUiType("Omock01.ui")[0]
+form_class = uic.loadUiType("Omock02.ui")[0]
 
 #화면을 띄우는데 사용되는 Class 선언
 class WindowClass(QMainWindow, form_class) :
@@ -155,7 +155,10 @@ class WindowClass(QMainWindow, form_class) :
                 plNm = "검은돌"
             
             if self.resultArr[i] == 5:
-                print(plNm+" : 우승 !!")
+                msgBox = QMessageBox()
+                msgBox.setWindowTitle("결과")
+                msgBox.setText(plNm+" 이 우승했습니다. !!")
+                msgBox.exec_()
                 self.res = True
     
         return self.res
@@ -171,6 +174,8 @@ class WindowClass(QMainWindow, form_class) :
         try:
             while True:
                 firstL = int(firstL) - 1
+                if firstL < 0 or firstL > len(self.int2d)-1:
+                    return cnt
                 if self.int2d[int(firstL)][int(secondL)] == player:
                     cnt+=1
                 else:
@@ -179,6 +184,8 @@ class WindowClass(QMainWindow, form_class) :
             return cnt
         
         return cnt
+    
+    
     
     
     # downCount
@@ -203,6 +210,14 @@ class WindowClass(QMainWindow, form_class) :
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     # leftCount
     def getLeft(self, firstL, secondL, player):
         
@@ -210,6 +225,8 @@ class WindowClass(QMainWindow, form_class) :
         try:
             while True:
                 secondL-=1
+                if secondL < 0:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
@@ -228,6 +245,8 @@ class WindowClass(QMainWindow, form_class) :
         try:
             while True:
                 secondL+=1
+                if secondL > len(self.int2d)-1:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
@@ -242,6 +261,14 @@ class WindowClass(QMainWindow, form_class) :
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     # leftUpCount
     def getLeftUp(self, firstL, secondL, player):
         
@@ -250,6 +277,8 @@ class WindowClass(QMainWindow, form_class) :
             while True:
                 firstL-=1
                 secondL-=1
+                if firstL < 0 or secondL < 0:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
@@ -269,6 +298,8 @@ class WindowClass(QMainWindow, form_class) :
             while True:
                 firstL+=1
                 secondL+=1
+                if firstL > len(self.int2d)-1 or secondL > len(self.int2d)-1:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
@@ -290,6 +321,8 @@ class WindowClass(QMainWindow, form_class) :
             while True:
                 firstL-=1
                 secondL+=1
+                if firstL < 0 or secondL > len(self.int2d)-1:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
@@ -309,6 +342,8 @@ class WindowClass(QMainWindow, form_class) :
             while True:
                 firstL+=1
                 secondL-=1
+                if firstL > len(self.int2d)-1 or secondL < 0:
+                    return self.cnt
                 if self.int2d[firstL][secondL] == player:
                     self.cnt+=1
                 else:
