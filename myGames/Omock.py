@@ -34,6 +34,7 @@ class WindowClass(QMainWindow, form_class) :
         self.int2d = [[0]*10 for i in range(10)]
         
         
+        
         self.initUI()    
         
         
