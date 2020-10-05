@@ -22,16 +22,16 @@ class WindowClass(QMainWindow, form_class) :
         super().__init__()
         self.setupUi(self)
         
-        self.ie = QtGui.QIcon('0.jpg')
-        self.iw = QtGui.QIcon("1.jpg")
-        self.ib = QtGui.QIcon("2.jpg")
+        self.ie = QtGui.QIcon('0.png')
+        self.iw = QtGui.QIcon("1.png")
+        self.ib = QtGui.QIcon("2.png")
         
         self.playerWB = False
         self.gameEnd = False
         self.gameResult = False
         
-        self.arr2d = [[0]*10 for i in range(10)]
-        self.int2d = [[0]*10 for i in range(10)]
+        self.arr2d = [[0]*20 for i in range(20)]
+        self.int2d = [[0]*20 for i in range(20)]
         
         
         self.initUI()    
@@ -387,8 +387,8 @@ class WindowClass(QMainWindow, form_class) :
             for j, val in enumerate(self.arr2d):
                 
                 self.qpbtn = QPushButton(self)
-                self.qpbtn.setGeometry(75*j, 75*i, 75, 75) # x, y, width, height
-                self.qpbtn.setIconSize(QtCore.QSize(75,75))
+                self.qpbtn.setGeometry(40*j, 40*i, 40, 40) # x, y, width, height
+                self.qpbtn.setIconSize(QtCore.QSize(40,40))
                 self.qpbtn.setIcon(self.ie)
                 self.qpbtn.setWhatsThis(str(i)+","+str(j))
                 self.arr2d[i][j] = self.qpbtn
@@ -397,7 +397,7 @@ class WindowClass(QMainWindow, form_class) :
             print()
          
         self.showInt2d() 
-        self.resize(750,750)   
+        self.resize(800,800)   
     
     
     
@@ -427,7 +427,7 @@ class WindowClass(QMainWindow, form_class) :
             if self.playerWB == True:
                 self.int2d[int(self.firstL)][int(self.secondL)] = 2
                 self.playerWB = False
-                self.gameResult = self.resultView(int(self.firstL), int(self.secondL), self.playerWB)
+                self.gameResult = self.result0View(int(self.firstL), int(self.secondL), self.playerWB)
                 if self.gameResult == True:
                     self.gameEnd = True
                 
