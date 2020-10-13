@@ -2,8 +2,8 @@
 import requests
 
 ## HTTP GET Request
-req = requests.get('https://home.cern/')
-
+# req = requests.get('https://home.cern/')
+req = requests.get('http://localhost/helloWeb/hello.jsp')
 ## HTML 소스 가져오기
 html = req.text
 ## HTTP Header 가져오기
@@ -14,6 +14,8 @@ status = req.status_code
 is_ok = req.ok
 
 print(html)
-# print(header)
-# print(status)
-# print(is_ok)
+
+
+print(header)
+print(status)
+print(is_ok)
