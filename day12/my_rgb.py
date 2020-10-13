@@ -37,14 +37,18 @@ class WindowClass(QMainWindow, form_class) :
 #                 self.pe2.setStyleSheet("background-color: #00ff00")
 #                 self.pe3.setStyleSheet("background-color: #0000ff")
                  
-                self.gv1.setStyleSheet("background-color: #ff0000")
-                self.gv2.setStyleSheet("background-color: #00ff00")
-                self.gv3.setStyleSheet("background-color: #0000ff")
+#                 self.gv1.setStyleSheet("background-color: #ff0000")
+#                 self.gv2.setStyleSheet("background-color: #00ff00")
+#                 self.gv3.setStyleSheet("background-color: #0000ff")
                 
                 
-#                 self.lbl1.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
-#                 self.lbl2.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
-#                 self.lbl3.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }") 
+                self.lbl1.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
+                self.lbl2.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
+                self.lbl3.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }") 
+                
+                self.lbl1.update()
+                self.lbl2.update()
+                self.lbl3.update()
 #                 
 #                 self.lbl1.setText("R")
 #                 self.lbl2.setText("G")
@@ -60,14 +64,17 @@ class WindowClass(QMainWindow, form_class) :
 #                 self.pe2.setStyleSheet("background-color: #ff0000")
 #                 self.pe3.setStyleSheet("background-color: #00ff00")
                  
-                self.gv1.setStyleSheet("background-color: #0000ff")
-                self.gv2.setStyleSheet("background-color: #ff0000")
-                self.gv3.setStyleSheet("background-color: #00ff00")
+#                 self.gv1.setStyleSheet("background-color: #0000ff")
+#                 self.gv2.setStyleSheet("background-color: #ff0000")
+#                 self.gv3.setStyleSheet("background-color: #00ff00")
                 
-                
-#                 self.lbl1.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }")
-#                 self.lbl2.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
-#                 self.lbl3.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
+                self.lbl1.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }")
+                self.lbl2.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
+                self.lbl3.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
+
+                self.lbl1.update()
+                self.lbl2.update()
+                self.lbl3.update()
 #                 
 #                 self.lbl1.setText("B")
 #                 self.lbl2.setText("R")
@@ -83,20 +90,25 @@ class WindowClass(QMainWindow, form_class) :
 #                 self.pe2.setStyleSheet("background-color: #0000ff")
 #                 self.pe3.setStyleSheet("background-color: #ff0000")
                  
-                self.gv1.setStyleSheet("background-color: #00ff00")  
-                self.gv2.setStyleSheet("background-color: #0000ff")  
-                self.gv3.setStyleSheet("background-color: #ff0000")  
+#                 self.gv1.setStyleSheet("background-color: #00ff00")  
+#                 self.gv2.setStyleSheet("background-color: #0000ff")  
+#                 self.gv3.setStyleSheet("background-color: #ff0000")  
                 
-#                 self.lbl1.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
-#                 self.lbl2.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }")
-#                 self.lbl3.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
+                
+                self.lbl1.setStyleSheet("QLabel { color: #00ff00; background-color: #00ff00; }")
+                self.lbl2.setStyleSheet("QLabel { color: #0000ff; background-color: #0000ff; }")
+                self.lbl3.setStyleSheet("QLabel { color: #ff0000; background-color: #ff0000; }")
+                
+                self.lbl1.update()
+                self.lbl2.update()
+                self.lbl3.update()
 #                 
 #                 self.lbl1.setText("G")
 #                 self.lbl2.setText("B")
 #                 self.lbl3.setText("R")
            
             self.index += 1
-            time.sleep(1)
+            time.sleep(0.5)
     
         
         
