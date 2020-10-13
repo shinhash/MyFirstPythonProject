@@ -22,7 +22,7 @@ class WindowClass(QMainWindow, form_class) :
     def onClicked(self):
         t1 = threading.Thread(target=self.realChangefunc, args=())
         t1.start()
-        
+#         self.realChangefunc()
         
     def realChangefunc(self):
         
@@ -106,9 +106,9 @@ class WindowClass(QMainWindow, form_class) :
 #                 self.lbl1.setText("G")
 #                 self.lbl2.setText("B")
 #                 self.lbl3.setText("R")
-           
+#             self.repaint()
             self.index += 1
-            time.sleep(0.5)
+            time.sleep(1)
     
         
         
