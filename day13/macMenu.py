@@ -13,7 +13,8 @@ browser = webdriver.Chrome(executable_path="./chromedriver.exe", options=options
 browser.get("http://www.goobne.co.kr/menu/menu_list.jsp?class=")
 
 time.sleep(3)
-tag_names = browser.find_element_by_css_selector(".menu_list_wrap")
-print(tag_names.text)
-# for tag in tag_names:
-#     print(tag.text)
+tag_names = browser.find_element_by_css_selector(".menu_list_wrap").find_elements_by_tag_name("li")
+# print(tag_names.text)
+for tag in tag_names:
+    print(tag.text)
+#     print(tag.action_text)
