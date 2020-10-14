@@ -1,0 +1,142 @@
+<ul class="list_menu" data-maxpage="2">
+            <li class="nophoto_type menu_fst" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">치즈라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">만두라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">떡라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">김치라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="1"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">짬뽕라면</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>4,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">떡볶이</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">라볶이</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>3,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">치즈떡볶이</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>4,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">치즈라볶이</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>4,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">수제왕돈가스</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>6,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">치즈돈가스</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>6,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">참치덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">김치덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>4,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">제육덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">카레덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">낙지덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">오징어덮밥</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,500</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">오므라이스</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,000</em>
+                    
+                </div>
+            </li>
+            <li class="nophoto_type opened_last" data-page="2"><!-- 이미지가 있는 경우 -->
+                <div class="info_menu">
+                    <em class="screen_out">명: </em><span class="loss_word">김치오므라이스</span>
+                    <em class="price_menu"><span class="screen_out">가격: </span>5,000</em>
+                    
+                </div>
+            </li>
+    </ul>

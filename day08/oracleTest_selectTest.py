@@ -38,7 +38,7 @@ for buyerInfo in cursor:
     
     
     
-cursor.execute('select * from temp02')
-for temp in cursor:
-    print(temp)    
+# cursor.execute('select * from temp02')
+# for temp in cursor:
+#     print(temp)    
     

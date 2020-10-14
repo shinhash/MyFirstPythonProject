@@ -32,7 +32,7 @@ cursor = conn.cursor()
 if(rescode==200):
     response_body = response.read()
     resp_dec = response_body.decode('utf-8')
-    print(resp_dec)
+#     print(resp_dec)
     
     
     items = BeautifulSoup(resp_dec, 'xml')
@@ -40,8 +40,9 @@ if(rescode==200):
         'item'
     )
     
+    sql = "insert into naverTestDB(title, link, category, description, telephone, address, roadAddress, mapx, mapy) values( ? , ? , ? , ? , ? , ? , ? , ? , ?)"
     
-    print(items)
+#     print(items)
     for item in my_titles:
         
         print()
@@ -67,14 +68,14 @@ if(rescode==200):
         mapx        = item.find("mapx").text
         mapy        = item.find("mapy").text
         
-#         sql = "insert into naverTestDB(title, link, category, description, telephone, address, roadAddress, mapx, mapy) values( ? , ? , ? , ? , ? , ? , ? , ? , ?)"
-#         data = (title, link, category, description, telephone, address, roadAddress, mapx, mapy)
-#         cursor.execute(sql, data)
+        
+        data = (title, link, category, description, telephone, address, roadAddress, mapx, mapy)
+        cursor.execute(sql, data)
     
 else:
     print("Error Code:" + rescode)
 
-
+conn.close()
 
 
 
