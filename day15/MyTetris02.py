@@ -41,47 +41,6 @@ class WindowClass(QMainWindow, form_class):
                  
         self.myRender()
         
-        
-    
-        
-        
-    def keyPressEvent(self, e):
-        
-        x = Block.xloc
-        y = Block.yloc
-        
-        if e.key() == Qt.Key_Escape:
-            self.close()
-        elif e.key() == Qt.Key_Up:
-            Block.yloc -= 1
-            
-        elif e.key() == Qt.Key_Down:
-            Block.yloc += 1
-            
-        elif e.key() == Qt.Key_Left:
-            Block.xloc -= 1
-            
-        elif e.key() == Qt.Key_Right:
-            Block.xloc += 1        
-        
-        
-        if Block.xloc < 0:
-            Block.xloc = x
-            
-        try:
-            self.setBlock2DWithBlock()
-            self.moveStackBlock2Scrin()
-        except:
-            Block.xloc = x
-            Block.yloc = y
-            
-            self.setBlock2DWithBlock()
-            self.moveStackBlock2Scrin()
-            
-        self.print2D(self.scren2D)
-        self.myRender()
-            
-            
             
             
 
@@ -90,9 +49,10 @@ class WindowClass(QMainWindow, form_class):
             print(line)        
         
         
+        
     def setBlock2DWithBlock(self):
         print("==============================")
-        print(Block.yloc, ",", Block.xloc)
+#         print(Block.yloc, ",", Block.xloc)
         
         for y, val in enumerate(self.scren2D):
             for x, val in enumerate(self.scren2D[y]):
@@ -126,9 +86,6 @@ class WindowClass(QMainWindow, form_class):
     
         
         
-        
-        
-        
     def initBlockStackScren2D(self):
         for i in range(20):
             self.block2D.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -149,6 +106,9 @@ class WindowClass(QMainWindow, form_class):
         for y, val in enumerate(self.scren2D):
             for x, val in enumerate(self.scren2D[y]):
                 self.scren2D[y][x] = self.block2D[y][x] + self.stack2D[y][x]
+    
+    
+    
     
 
     def myRender(self):
@@ -199,8 +159,124 @@ class WindowClass(QMainWindow, form_class):
                     
                 if self.scren2D[y][x] == 17:
                     self.palete[y][x].setStyleSheet("background-color: #660033;")
+      
+      
+    def isCollisionFunc(self):
+        
+        isCrash = False
+        for y, val in enumerate(self.scren2D):
+            for x, val in enumerate(self.scren2D[y]):
+                blockTemp = self.block2D[y][x]
+                stackTemp = self.stack2D[y][x]
+                if blockTemp != 0 and stackTemp != 0:
+                    isCrash = True
+                    return isCrash
+        return isCrash
+    
+    
+    
+    
+    def moveBlockToStack2D(self):
+        for y, val in enumerate(self.stack2D):
+            for x, val in enumerate(self.stack2D[y]):
+                if self.block2D[y][x] > 0:
+                    self.stack2D[y][x] = self.block2D[y][x]+10;
+     
+    
+    
+    
+    def getNotFullStack(self):
+    
+        print("getNotFullStack")
+        stackTemp = []
+        for i, val in enumerate(self.stack2D):
+            temp = self.stack2D[i]
+            if temp[0] > 0 and temp[1] > 0 and temp[2] > 0 and temp[3] > 0 and temp[4] > 0 and temp[5] > 0 and temp[6] > 0 and temp[7] > 0 and temp[8] > 0 and temp[9] > 0:
+                pass
+            else:
+                strLine = ""
+                strLine += str(temp[0]) + ","
+                strLine += str(temp[1]) + ","
+                strLine += str(temp[2]) + ","
+                strLine += str(temp[3]) + ","
+                strLine += str(temp[4]) + ","
+                strLine += str(temp[5]) + ","
+                strLine += str(temp[6]) + ","
+                strLine += str(temp[7]) + ","
+                strLine += str(temp[8]) + ","
+                strLine += str(temp[9])
+
+                stackTemp.append(strLine)
+#         print(stackTemp)
+        return stackTemp
+
+
+
+
                     
-                    
+    def keyPressEvent(self, e):
+        
+        x = Block.xloc
+        y = Block.yloc
+        flagColBound = False
+        flagDown = False
+        
+        if e.key() == Qt.Key_Escape:
+            self.close()
+        if e.key() == Qt.Key_Up:
+            Block.yloc -= 1
+            
+        if e.key() == Qt.Key_Down:
+            Block.yloc += 1
+            flagDown = True
+            
+        if e.key() == Qt.Key_Left:
+            Block.xloc -= 1
+            
+        if e.key() == Qt.Key_Right:
+            Block.xloc += 1        
+        
+        
+        if Block.xloc < 0:
+            Block.xloc = x
+            
+        if Block.yloc < 0:
+            Block.yloc = y 
+            
+        try:
+            self.setBlock2DWithBlock()
+            self.moveStackBlock2Scrin()
+        except:
+            print("Except!!")
+            flagColBound = True
+            
+        isCollision = False
+        isCollision = self.isCollisionFunc()
+        
+        
+        if isCollision == True or flagColBound == True:
+            
+            Block.xloc = x 
+            Block.yloc = y 
+            
+            self.setBlock2DWithBlock()
+            self.moveStackBlock2Scrin()
+            
+            if flagDown == True:
+                self.moveBlockToStack2D()
+                
+                notFullStack = self.getNotFullStack()
+                print("boom!!!")
+                lineCount = 20 - len(notFullStack)
+                for i, lineTemp in enumerate(notFullStack):
+                    print(lineTemp)
+                
+                return
+                
+                
+            
+        self.print2D(self.scren2D)
+        self.myRender()                
                     
                     
                     
