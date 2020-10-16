@@ -20,7 +20,7 @@ class WindowClass(QMainWindow, form_class):
         self.block2D = []
         self.stack2D = []
         self.scren2D = []
-        self.palete = []
+        self.lbl2D = []
         
         self.initBlockStackScren2D()
         
@@ -37,7 +37,7 @@ class WindowClass(QMainWindow, form_class):
             for x, val in enumerate(self.scren2D[y]):
                 self.lbl = QLabel(self)
                 self.lbl.setGeometry(31*x, 31*y, 30, 30)
-                self.palete[y][x] = self.lbl
+                self.lbl2D[y][x] = self.lbl
                  
         self.myRender()
         
@@ -96,7 +96,7 @@ class WindowClass(QMainWindow, form_class):
             for j in range(10):
                 self.temp.append(QLabel(self))
                 
-            self.palete.append(self.temp)
+            self.lbl2D.append(self.temp)
 
 
 
@@ -116,49 +116,49 @@ class WindowClass(QMainWindow, form_class):
             for x, val in enumerate(self.scren2D[y]):
                 
                 if self.scren2D[y][x] == 0:
-                    self.palete[y][x].setStyleSheet("background-color: #666666;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #666666;")
                     
                 if self.scren2D[y][x] == 1:
-                    self.palete[y][x].setStyleSheet("background-color: #FF0000;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #FF0000;")
     
                 if self.scren2D[y][x] == 2:
-                    self.palete[y][x].setStyleSheet("background-color: #FF6600;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #FF6600;")
     
                 if self.scren2D[y][x] == 3:
-                    self.palete[y][x].setStyleSheet("background-color: #FFFF00;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #FFFF00;")
     
                 if self.scren2D[y][x] == 4:
-                    self.palete[y][x].setStyleSheet("background-color: #00FF00;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #00FF00;")
     
                 if self.scren2D[y][x] == 5:
-                    self.palete[y][x].setStyleSheet("background-color: 0#000FF;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: 0#000FF;")
 
                 if self.scren2D[y][x] == 6:
-                    self.palete[y][x].setStyleSheet("background-color: #00FFFF;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #00FFFF;")
 
                 if self.scren2D[y][x] == 7:
-                    self.palete[y][x].setStyleSheet("background-color: #FF0099;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #FF0099;")
                     
                 if self.scren2D[y][x] == 11:
-                    self.palete[y][x].setStyleSheet("background-color: #660000;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #660000;")
                     
                 if self.scren2D[y][x] == 12:
-                    self.palete[y][x].setStyleSheet("background-color: #CC3300;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #CC3300;")
                 
                 if self.scren2D[y][x] == 13:
-                    self.palete[y][x].setStyleSheet("background-color: #996600;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #996600;")
                 
                 if self.scren2D[y][x] == 14:
-                    self.palete[y][x].setStyleSheet("background-color: #003300;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #003300;")
                 
                 if self.scren2D[y][x] == 15:
-                    self.palete[y][x].setStyleSheet("background-color: #000066;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #000066;")
                     
                 if self.scren2D[y][x] == 16:
-                    self.palete[y][x].setStyleSheet("background-color: #006666;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #006666;")
                     
                 if self.scren2D[y][x] == 17:
-                    self.palete[y][x].setStyleSheet("background-color: #660033;")
+                    self.lbl2D[y][x].setStyleSheet("background-color: #660033;")
       
       
     def isCollisionFunc(self):
