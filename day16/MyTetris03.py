@@ -1,7 +1,14 @@
-import sys
+import sys, time, threading
+from threading import Timer
+
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5 import QtCore  # QtCore를 명시적으로 보여주기 위해
+
+
 
 from PyQt5 import uic
-from PyQt5.Qt import Qt
+from PyQt5.Qt import Qt, QThread
 from PyQt5.QtWidgets import *
 from PyQt5.uic.Compiler.qtproxies import QtWidgets, QtGui
 
@@ -9,6 +16,7 @@ from day15.MyTetris import scren2D
 
 from day16.Block import Block
 from sys import excepthook
+from skimage.viewer.qt import QtCore
 
 form_class = uic.loadUiType("tetris.ui")[0]
 
@@ -45,8 +53,10 @@ class WindowClass(QMainWindow, form_class):
                  
         self.myRender()
         
-            
-            
+        myThread = threading.Thread(target=self.autoDownAction, args=())
+#         myThread.daemon()
+#         myThread.start()
+        
 
     def print2D(self, arr):
         for line in arr:
@@ -62,8 +72,6 @@ class WindowClass(QMainWindow, form_class):
             for x, val in enumerate(self.scren2D[y]):
                 self.block2D[y][x] = 0
                 self.scren2D[y][x] = self.block2D[y][x] + self.stack2D[y][x]
-        
-        
         
         
         
@@ -135,8 +143,8 @@ class WindowClass(QMainWindow, form_class):
                 self.block2D[self.block.yloc+1][self.block.xloc] = self.block.kind
                  
             if self.block.status == 3:
-                self.block2D[self.block.yloc-1][self.block.xloc-1] = self.block.kind
-                self.block2D[self.block.yloc-1][self.block.xloc] = self.block.kind
+                self.block2D[self.block.yloc][self.block.xloc-1] = self.block.kind
+                self.block2D[self.block.yloc][self.block.xloc] = self.block.kind
                 self.block2D[self.block.yloc][self.block.xloc+1] = self.block.kind
                 self.block2D[self.block.yloc+1][self.block.xloc] = self.block.kind
                  
@@ -278,7 +286,7 @@ class WindowClass(QMainWindow, form_class):
                 if self.scren2D[y][x] == 17:
                     self.lbl2D[y][x].setStyleSheet("background-color: #660033;")
       
-      
+        
     def isCollisionFunc(self):
         
         isCrash = False
@@ -304,7 +312,6 @@ class WindowClass(QMainWindow, form_class):
     
     
     def getNotFullStack(self):
-    
         stackTemp = []
         for i, val in enumerate(self.stack2D):
             temp = self.stack2D[i]
@@ -350,78 +357,138 @@ class WindowClass(QMainWindow, form_class):
             elif self.block.status == 4:
                 self.block.status = 1
 
-              
+
+
+    def autoDownAction(self):
+        while True:
+            self.realTimeAction(Qt.Key_Down, "autoDown")
+            time.sleep(1)
+            
+
+
+    def keyPressEvent(self, e):
+        getKey = e.key()
+        comes = "key"
+        self.realTimeAction(getKey, comes)
+               
               
               
                     
-    def keyPressEvent(self, e):
-        
+    def realTimeAction(self, key, comes):
+#         self.update()
+        self.repaint()
         status = self.block.status
         x = self.block.xloc
         y = self.block.yloc
         flagColBound = False
         flagDown = False
-         
-        if e.key() == Qt.Key_Escape:
+        
+        if key == Qt.Key_Escape:
             self.close()
             
-        if e.key() == Qt.Key_Up:
+        if key == Qt.Key_Up:
             self.blockSpin()
          
-        if e.key() == Qt.Key_Down:
+        if key == Qt.Key_Down:
             self.block.yloc += 1
             flagDown = True
              
-        if e.key() == Qt.Key_Left:
+        if key == Qt.Key_Left:
             self.block.xloc -= 1
               
-        if e.key() == Qt.Key_Right:
+        if key == Qt.Key_Right:
             self.block.xloc += 1        
-        
         
         try:
             self.setBlock2DWithBlock()
             
-            if self.block2D[0][0] == self.block.kind:
-                raise Exception
-            if self.block2D[1][0] == self.block.kind:
-                raise Exception
-            if self.block2D[2][0] == self.block.kind:
-                raise Exception
-            if self.block2D[3][0] == self.block.kind and self.block.kind == 16:
-                raise Exception
-            if self.block2D[4][0] == self.block.kind:
-                raise Exception
-            if self.block2D[5][0] == self.block.kind:
-                raise Exception
-            if self.block2D[6][0] == self.block.kind:
-                raise Exception
-            if self.block2D[7][0] == self.block.kind:
-                raise Exception
-            if self.block2D[8][0] == self.block.kind:
-                raise Exception
-            if self.block2D[9][0] == self.block.kind:
-                raise Exception
-            if self.block2D[10][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[11][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[12][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[13][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[14][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[15][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[16][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[17][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[18][0] == self.block.kind:
-                raise Exception                       
-            if self.block2D[19][0] == self.block.kind:
-                raise Exception
+            
+            if self.block.kind == 2:
+                if self.block.xloc == -1:  
+                    raise Exception
+                else:
+                    if self.block2D[0][0] == self.block.kind and self.block2D[0][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[1][0] == self.block.kind and self.block2D[1][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[2][0] == self.block.kind and self.block2D[2][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[3][0] == self.block.kind and self.block2D[3][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[4][0] == self.block.kind and self.block2D[4][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[5][0] == self.block.kind and self.block2D[5][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[6][0] == self.block.kind and self.block2D[6][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[7][0] == self.block.kind and self.block2D[7][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[8][0] == self.block.kind and self.block2D[8][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[9][0] == self.block.kind and self.block2D[9][9] == self.block.kind:
+                        raise Exception
+                    if self.block2D[10][0] == self.block.kind and self.block2D[10][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[11][0] == self.block.kind and self.block2D[11][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[12][0] == self.block.kind and self.block2D[12][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[13][0] == self.block.kind and self.block2D[13][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[14][0] == self.block.kind and self.block2D[14][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[15][0] == self.block.kind and self.block2D[15][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[16][0] == self.block.kind and self.block2D[16][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[17][0] == self.block.kind and self.block2D[17][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[18][0] == self.block.kind and self.block2D[18][9] == self.block.kind:
+                        raise Exception                       
+                    if self.block2D[19][0] == self.block.kind and self.block2D[19][9] == self.block.kind:
+                        raise Exception                                                 
+                
+            else:
+                if self.block2D[0][0] == self.block.kind and self.block2D[0][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[1][0] == self.block.kind and self.block2D[1][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[2][0] == self.block.kind and self.block2D[2][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[3][0] == self.block.kind and self.block2D[3][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[4][0] == self.block.kind and self.block2D[4][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[5][0] == self.block.kind and self.block2D[5][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[6][0] == self.block.kind and self.block2D[6][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[7][0] == self.block.kind and self.block2D[7][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[8][0] == self.block.kind and self.block2D[8][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[9][0] == self.block.kind and self.block2D[9][9] == self.block.kind:
+                    raise Exception
+                if self.block2D[10][0] == self.block.kind and self.block2D[10][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[11][0] == self.block.kind and self.block2D[11][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[12][0] == self.block.kind and self.block2D[12][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[13][0] == self.block.kind and self.block2D[13][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[14][0] == self.block.kind and self.block2D[14][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[15][0] == self.block.kind and self.block2D[15][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[16][0] == self.block.kind and self.block2D[16][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[17][0] == self.block.kind and self.block2D[17][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[18][0] == self.block.kind and self.block2D[18][9] == self.block.kind:
+                    raise Exception                       
+                if self.block2D[19][0] == self.block.kind and self.block2D[19][9] == self.block.kind:
+                    raise Exception
                     
         except:
             flagColBound = True
@@ -432,7 +499,9 @@ class WindowClass(QMainWindow, form_class):
         self.moveStackBlock2Scrin()
 
         isCollision = self.isCollisionFunc()
-        print(isCollision)
+        print("충돌 = " + str(isCollision))
+        
+        print("comes = " + comes)
         
         
          
@@ -440,24 +509,44 @@ class WindowClass(QMainWindow, form_class):
             self.block.status = status
             self.block.xloc = x 
             self.block.yloc = y 
-            print("test1")
             self.setBlock2DWithBlock() # block2D reset
-            print("test2")
             self.moveStackBlock2Scrin() # stack 데이터를 scrin에 저장
-            print("test3")
               
             if flagDown == True:
-#                 pass
                 self.moveBlockToStack2D()
-#                  
+                
+                notFullStack = self.getNotFullStack()
+                FullStackCnt = len(self.block2D) - len(notFullStack)
+                print()
+                print("===================================")
+                print("FullStackCnt = " + str(FullStackCnt))
+                print("===================================")
+                
+                for temp in range(FullStackCnt):
+                    notFullStack.insert(temp, "0,0,0,0,0,0,0,0,0,0")
+                for newStack in notFullStack:
+                    pass
+#                     print(newStack)
+                print("===================================")
+                    
+                for y in range(len(self.stack2D)):
+                    stackLine = notFullStack[y]
+                    stackTemp = stackLine.split(",")
+                    for x in range(len(self.stack2D[y])):
+                        self.stack2D[y][x] = int(stackTemp[x])
+#                     print(stackLine)
+                print("===================================")
+                
+                
                 self.block.__init__()
                 self.setBlock2DWithBlock() # block2D reset
                 self.moveStackBlock2Scrin() # stack 데이터를 scrin에 저장
                 flagDown = False
             
+        
         self.myRender()                
         self.print2D(self.scren2D)
-                    
+            
                     
                     
 if __name__ == "__main__" :
