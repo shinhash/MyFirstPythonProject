@@ -16,9 +16,9 @@ for item in data:
             else:
                 text = " "
             strItem.append(text)
-#             print(text, end=", ")
+            print(text, end=", ")
 #         strItem.append("\n")
-        print(strItem)
+#         print(strItem)
         print()
     print()
     
